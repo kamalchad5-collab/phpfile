@@ -1,0 +1,33 @@
+sudo mysql -u webuser -p
+
+USE user_management;
+
+SHOW TABLES;
+
+INSERT INTO users (username, password, fullname, gender, country, hobbies)
+VALUES ('SuperUser',
+        '$2y$10$H2S1uK8FfK/mM4Qx5yF9qOjHh4E27sF7FJZ0zwI1UcK9Fz6WJ6e6G',
+        'Super User', 'Male', 'USA', 'Reading,Traveling');
+
+
+
+
+USE user_management;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    fullname VARCHAR(100) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    country VARCHAR(50) NOT NULL,
+    hobbies TEXT
+);
+
+
+
+//to generate the hash key we use the following php commands
+
+<?php
+echo password_hash("California", PASSWORD_DEFAULT);
+?>
